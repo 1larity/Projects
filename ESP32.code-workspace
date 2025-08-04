@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "ESP32_cam"
+		},
+		{
+			"name": "ESP32_CAM_AI",
+			"path": "ESP32_CAM_AI"
+		}
+	],
+	"settings": {}
+}
