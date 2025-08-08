@@ -419,17 +419,18 @@ void setup() {
     config.jpeg_quality = 10;
     config.fb_count = 2;
   } else {
-    config.frame_size = FRAMESIZE_SVGA;
+    config.frame_size = FRAMESIZE_QVGA  ;
     config.jpeg_quality = 12;
     config.fb_count = 1;
   }
   
   // Camera init
-  esp_err_t err = esp_camera_init(&config);
-  if (err != ESP_OK) {
-    Serial.printf("Camera init failed with error 0x%x", err);
-    return;
-  }
+ // esp_err_t err = esp_camera_init(&config);
+ // if (err != ESP_OK) {
+ //   Serial.printf("Camera init failed with error 0x%x", err);
+ //    while (true) delay(100); // prevent WDT
+ // }
+ 
   // Wi-Fi connection
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
