@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Reverse Engineer ColorReader BLE",
+      "type": "shell",
+      "command": "echo",
+      "args": [
+        "Follow these instructions to create Python scripts that reverse-engineer and read data from a Datacolor ColorReader over Bluetooth Low Energy (BLE):\n1. ENVIRONMENT:\n- Use Python 3.9+ in a virtual environment.\n- Install bleak: `pip install bleak`.\n- Ensure PC Bluetooth supports BLE.\n  Windows 10 11: native BLE support.\n  Linux: install BlueZ.\n  macOS: 10.13+.\n2. SCAN FOR DEVICE:\n- Write scan.py using `bleak.BleakScanner.discover()`.\n- Filter devices with name containing 'color' or 'datacolor'.\n- Output name + address.\n3. DUMP GATT:\n- Write dump_gatt.py to connect with `bleak.BleakClient(address)`.\n- Enumerate services, characteristics, descriptors.\n- Record UUIDs: Battery service 0000180F, Battery level 00002A19, vendor-specific UUIDs, and any 'notify' or 'write' properties.\n4. SUBSCRIBE TO NOTIFICATIONS:\n- Write listen.py to subscribe to all notifiable characteristics with `start_notify()`.\n- Press ColorReader button and log hex data.\n5. READ KNOWN VALUES:\n- Write read_common.py to read battery level and device info.\n6. TEST WRITABLE CHARS:\n- Write fuzz_write.py to send small payloads (x01, x00x01, etc.) to 'write' or 'write-without-response' characteristics.\n- Observe if measurement triggers or notifications change.\n7. ANALYSE DATA:\n- Compare multiple readings from different colours to identify RGB/XYZ/LAB fields.\n- Parse and save to CSV.\nTOOLS & TIPS:\n- Use nRF Connect app to verify UUIDs & props before Python testing.\n- For deeper sniffing, use Ubertooth One or nRF52840 with Wireshark.\n- Clear GATT cache if needed (OS-specific steps).\nGOAL:\n- Extract usable colour data directly from the ColorReader for PC-side integration without official mobile app."
+      ]
+    }
+  ]
+}
