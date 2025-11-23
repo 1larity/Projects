@@ -23,6 +23,7 @@ __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
+*.pyc
 .venv/
 venv/
 env/
